@@ -94,15 +94,17 @@
     </div>
     <div class="card">
       <div class="video-wrapper">
-        <video id="video" controls>
-          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">          متصفحك لا يدعم عرض الفيديو
+        <!-- تم إصلاح خطأ الفيديو بوضع ID بشكل صحيح داخل JS -->
+        <video id="video" controls preload="auto">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          متصفحك لا يدعم عرض الفيديو
         </video>
       </div>
       <div class="controls">
-        <button onclick="document.getElementById('video').play()">▶️ تشغيل</button>
-        <button onclick="document.getElementById('video').pause()">⏸️ إيقاف</button>
-        <button onclick="document.getElementById('video').volume = Math.min(1, video.volume + 0.1)">🔊 رفع الصوت</button>
-        <button onclick="document.getElementById('video').volume = Math.max(0, video.volume - 0.1)">🔉 خفض الصوت</button>
+        <button onclick="video.play()">▶️ تشغيل</button>
+        <button onclick="video.pause()">⏸️ إيقاف</button>
+        <button onclick="video.volume = Math.min(1, video.volume + 0.1)">🔊 رفع الصوت</button>
+        <button onclick="video.volume = Math.max(0, video.volume - 0.1)">🔉 خفض الصوت</button>
       </div>
       <div class="quote">
         <div class="quote-icon">⭐</div>
@@ -110,9 +112,11 @@
       </div>
     </div>
   </div>
+
   <script>
+    const video = document.getElementById('video');
+
     document.addEventListener('DOMContentLoaded', function() {
-      var video = document.getElementById('video');
       video.addEventListener('play', function() { console.log('يتم تشغيل الفيديو'); });
       video.addEventListener('pause', function() { console.log('تم إيقاف الفيديو'); });
       video.addEventListener('ended', function() { console.log('انتهى الفيديو'); });
